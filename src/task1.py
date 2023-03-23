@@ -17,10 +17,12 @@ def filter_healthy(stai):
 
 def number_choosing_a(filename):
 
-    choices = pd.read_csv(filename,header=0)
+    choices = pd.read_csv(filename,header=None)
     choices.columns = choices.columns = [str(i) for i in range(1, len(choices.columns) + 1)]
     average_ones_per_row = (choices == 1).mean(axis=1)
+    sum_of_one = (choices == 1).sum(axis=1)
     choices['average_ones_per_row'] = average_ones_per_row
+    choices['sum_of_one']= sum_of_one
     seventy_thirty = choices.iloc[:,:40]
     eighty_twenty = choices.iloc[:,40:81]
     sixty_forty = choices.iloc[:,81:121]
